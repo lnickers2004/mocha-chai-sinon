@@ -8,36 +8,17 @@
 
 var getPalette = require('../lib/getPalette')
   , assert = require('assert')
-  , fs = require('fs')
   , path = require('path')
-
-  , configPath = path.join(process.cwd(), 'config.json')
-  , writeConfig
-
-writeConfig = function(configuration, cb) {
-  fs.writeFile(configPath, JSON.stringify(configuration), cb)
-}
 
 
 describe('getPalette', function() {
-  var config
 
-  before(function(done) {
-    fs.readFile(configPath, function(err, data) {
-      config = JSON.parse(data.toString())
-      done()
-    })
-  })
+  it('should throw an error if the result is not an array', function() {
+    function getBadPalette() {
+      getPalette(path.join(process.cwd(), 'test', 'fixtures', 'config.json'))
+    }
 
-  afterEach(function(done) {
-    writeConfig(config, done)
-  })
-
-  it('should throw an error if the result is not an array', function(done) {
-    writeConfig({ palette : 'not an array' }, function(err) {
-      assert.throws(getPalette, /Palette is not an array/)
-      done()
-    })
+    assert.throws(getBadPalette, /is not an array/)
   })
 
 
