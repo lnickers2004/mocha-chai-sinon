@@ -7,15 +7,11 @@ const
   express = require('express')
 , app = express()
 
+const
+  getPalette = require('./lib/getPalette')
+
+
 app.set('view engine', 'jade')
-
-
-function getPalette() {
-  'use strict';
-
-  return ['#ffc2aa', '#435d3e', '#b61f3c']
-}
-
 
 app.get('/', function(req, res) {
   'use strict';
