@@ -9,10 +9,18 @@ const
 
 app.set('view engine', 'jade')
 
+
+function getPalette() {
+  'use strict';
+
+  return ['#ffc2aa', '#435d3e', '#b61f3c']
+}
+
+
 app.get('/', function(req, res) {
   'use strict';
 
-  res.render('index', { palette : ['#ffc2aa', '#435d3e', '#b61f3c'] })
+  res.render('index', { palette : getPalette()})
 })
 
 app.listen(3000, function() {
