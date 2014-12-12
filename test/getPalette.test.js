@@ -13,8 +13,14 @@ var getPalette = require('../lib/getPalette')
 describe('getPalette', function() {
 
   it('should throw an error if the result is not an array', function() {
+    function fetch() {
+      return 'definitely not an array'
+    }
 
-    assert.throws(getPalette, /is not an array/)
+    assert.throws(
+      function() { getPalette(fetch) }
+    , /is not an array/
+    )
   })
 
   it('should return an array with 3 items', function() {
