@@ -16,7 +16,7 @@ describe('getPalette', function() {
     var palette = getPalette()
 
     assert(Array.isArray(palette))
-    assert.equal(palette.length, 3)
+    assert.equal(palette.length, 3, 'palette length was not 3')
   })
 
 })
