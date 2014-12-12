@@ -19,4 +19,12 @@ describe('hex2rgb', function() {
     , /Invalid hexadecimal/
     )
   })
+
+  it('should return a correctly converted RGB value', function() {
+    var rgb1 = hex2rgb('#00FF00')
+      , rgb2 = hex2rgb('#F0F')
+
+    assert.deepEqual(rgb1, [0, 255, 0])
+    assert.deepEqual(rgb2, [255, 0, 255])
+  })
 })
