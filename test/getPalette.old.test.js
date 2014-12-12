@@ -7,7 +7,7 @@
 
 'use strict';
 
-var getPalette = require('../lib/getPalette')
+var getPalette = require('../lib/getPalette.old')
   , assert = require('assert')
 
 describe('getPalette', function() {
