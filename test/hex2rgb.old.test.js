@@ -7,7 +7,7 @@
 
 'use strict';
 
-var hex2rgb = require('../lib/hex2rgb')
+var hex2rgb = require('../lib/hex2rgb.old')
   , assert = require('assert')
 
 describe('hex2rgb', function() {
