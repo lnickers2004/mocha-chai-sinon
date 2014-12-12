@@ -12,7 +12,7 @@ app.set('view engine', 'jade')
 app.get('/', function(req, res) {
   'use strict';
 
-  res.render('index', { palette : ['#afc234', '#435d3e', 'b6d73'] })
+  res.render('index', { palette : ['#afc234', '#435d3e', '#b6d73'] })
 })
 
 app.listen(3000, function() {
