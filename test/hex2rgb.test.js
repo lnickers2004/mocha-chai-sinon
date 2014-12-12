@@ -12,19 +12,20 @@ var hex2rgb = require('../lib/hex2rgb')
 
 describe('hex2rgb', function() {
 
-  it('should throw an error if supplied an invalid hex code', function() {
+  it('should return an error if supplied an invalid hex code', function(done) {
 
-    assert.throws(
-      function() { hex2rgb('not a hex') }
-    , /Invalid hexadecimal/
-    )
+    hex2rgb('invalid', function(err, data) {
+      assert(err)
+      done()
+    })
   })
 
-  it('should return a correctly converted RGB value', function() {
-    var rgb1 = hex2rgb('#00FF00')
-      , rgb2 = hex2rgb('#F0F')
+  it('should return a correctly converted RGB value', function(done) {
 
-    assert.deepEqual(rgb1, [0, 255, 0])
-    assert.deepEqual(rgb2, [255, 0, 255])
+    hex2rgb('#00FF00', function(err, data) {
+      assert.strictEqual(err, null)
+      assert.deepEqual(data, [0, 255, 0])
+      done()
+    })
   })
 })
