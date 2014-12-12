@@ -11,7 +11,7 @@ var getPalette = require('../lib/getPalette')
   , path = require('path')
 
 
-describe('getPalette', function() {
+describe.skip('getPalette', function() {
 
   it('should throw an error if the result is not an array', function() {
     function getBadPalette() {
