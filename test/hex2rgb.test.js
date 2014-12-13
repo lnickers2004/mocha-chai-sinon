@@ -27,8 +27,19 @@ describe('hex2rgb', function() {
       })
     })
 
-    it('should return an error if supplied an invalid hex code', function(done) {
+    it('should always return the result of parse', function(done) {
+      var stubResult = [1337, 1337, 1337]
+      sinon.stub(hex2rgb, 'parse').returns(stubResult)
 
+      hex2rgb.convert('#ffffff', function(err, data) {
+        expect(data).to.deep.equal(stubResult)
+
+        hex2rgb.parse.restore()
+        done()
+      })
+    })
+
+    it('should return an error if supplied an invalid hex code', function(done) {
       hex2rgb.convert('invalid', function(err, data) {
         assert(err)
         done()
@@ -36,7 +47,6 @@ describe('hex2rgb', function() {
     })
 
     it('should return a correctly converted RGB value', function(done) {
-
       hex2rgb.convert('#00FF00', function(err, data) {
         assert.strictEqual(err, null)
         assert.deepEqual(data, [0, 255, 0])
