@@ -10,10 +10,23 @@
 var hex2rgb = require('../lib/hex2rgb')
   , assert = require('assert')
   , sinon = require('sinon')
+  , expect = require('chai').expect
 
 describe('hex2rgb', function() {
 
   describe('convert', function() {
+    it('should call parse once', function(done) {
+      sinon.spy(hex2rgb, 'parse')
+
+      hex2rgb.convert('#ffffff', function(err, data) {
+        expect(hex2rgb.parse.calledOnce).to.be.true()
+        expect(hex2rgb.parse.args[0][0]).to.have.length(6)
+
+        hex2rgb.parse.restore()
+        done()
+      })
+    })
+
     it('should return an error if supplied an invalid hex code', function(done) {
 
       hex2rgb.convert('invalid', function(err, data) {
@@ -31,7 +44,6 @@ describe('hex2rgb', function() {
       })
     })
   })
-
 
 
 })
