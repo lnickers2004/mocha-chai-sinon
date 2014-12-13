@@ -50,7 +50,6 @@ describe('hex2rgb', function() {
           done()
         })
       })
-
     })
 
     it('should return an error if supplied an invalid hex code', function(done) {
@@ -68,6 +67,4 @@ describe('hex2rgb', function() {
       })
     })
   })
-
-
 })
