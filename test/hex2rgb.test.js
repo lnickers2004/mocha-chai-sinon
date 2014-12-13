@@ -39,6 +39,20 @@ describe('hex2rgb', function() {
       })
     })
 
+    it('should always pass a 6 element array to parse', function(done) {
+      var mock = sinon.mock(hex2rgb)
+
+      mock.expects('parse').twice().withExactArgs(['0', '0', '0', '0', '0', '0'])
+
+      hex2rgb.convert('#000000', function(err, data) {
+        hex2rgb.convert('#000', function(err, data) {
+          mock.verify()
+          done()
+        })
+      })
+
+    })
+
     it('should return an error if supplied an invalid hex code', function(done) {
       hex2rgb.convert('invalid', function(err, data) {
         assert(err)
